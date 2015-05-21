@@ -1482,7 +1482,8 @@ ss.XhrUpload = {
             return;
         }
 
-        params[this._opts.name] = fileObj.name;
+        // 配合aliyun-oss的需求
+        // params[this._opts.name] = fileObj.name;
 
         headers['X-Requested-With'] = 'XMLHttpRequest';
         headers['X-File-Name'] = fileObj.name;
@@ -1841,14 +1842,14 @@ ss.extendObj(ss.SimpleUpload.prototype, {
         elem.ondrop = function( e ) {
             e.preventDefault();
 
-            ss.removeClass( this, self._opts.dragClass );            
-            
+            ss.removeClass( this, self._opts.dragClass );
+
             if ( !self._dragFileCheck( e ) ) {
                 return false;
             }
 
             self._addFiles( e.dataTransfer.files );
-            self._cycleQueue();            
+            self._cycleQueue();
         };
     }
 });
